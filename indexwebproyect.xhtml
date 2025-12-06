@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8" />
+        <title>CoeurVisible – Vivre l’invisible</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 0;
+            background: #f5f7fb;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(135deg, #f35a4b, #f2a52b);
+            color: white;
+            padding: 24px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #f35a4b;
+        }
+
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            padding: 60px 10%;
+            background: white;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            color: #1b2744;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.1rem;
+            max-width: 650px;
+            line-height: 1.6;
+        }
+
+        .tagline {
+            margin-top: 18px;
+            padding: 10px 16px;
+            display: inline-block;
+            background: #ffe7df;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #c23a24;
+            font-size: 0.95rem;
+        }
+
+        main {
+            padding: 20px 10% 60px;
+        }
+
+        section {
+            margin-top: 40px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+
+        section h2 {
+            margin-top: 0;
+            color: #1b2744;
+        }
+
+        .activities ul {
+            padding-left: 20px;
+        }
+
+        .activities li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px 10%;
+            font-size: 0.9rem;
+            color: #555;
+            background: #edf0f8;
+        }
+
+        .pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #edf0f8;
+            font-size: 0.8rem;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
+
+        .highlight {
+            font-weight: 600;
+        }
+    </style>
+    </head>
+    
+    <body>
+        
+        <header>
+            <div class="logo">
+                <div class="logo-circle">CV</div>
+                <div>
+                    <div style="font-weight:700; font-size:1.1rem;">CoeurVisible</div>
+                    <div style="font-size:0.85rem;">Vivre pour comprendre l’invisible</div>
+                </div>
+            </div>
+            
+            <nav>
+                <a href="#qui-sommes-nous">Qui sommes-nous ?</a>
+                <a href="#offre">Notre offre</a>
+                <a href="#activites">Activités</a>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Vivre l’invisible : séminaires immersifs sur les handicaps invisibles</h1>
+            <p class="subtitle">
+                CoeurVisible est une association loi 1901 engagée dans la sensibilisation aux handicaps invisibles en milieu professionnel.
+                Nous aidons les entreprises à développer une culture inclusive vécue et ressentie grâce à des séminaires immersifs.
+            </p>
+            
+            <div class="tagline">
+                Pour mieux comprendre, il faut parfois vivre ce que l’on ne voit pas.
+            </div>
+        </section>
+        
+        <main>
+            
+            <section id="qui-sommes-nous">
+                <h2>Qui sommes-nous ?</h2>
+                
+                <p>
+                    Nous sommes l’association <span class="highlight">CoeurVisible</span>, régie par la loi 1901 et engagée dans la sensibilisation aux handicaps invisibles en milieu professionnel.
+                    Notre ambition est d’aider les entreprises à développer une culture inclusive grâce à des séminaires immersifs et expérientiels.
+                </p>
+                
+                <p style="font-size:0.9rem; color:#555;">
+                    À la suite du premier rendu, nous avons choisi de nous concentrer en priorité sur les entreprises.
+                </p>
+                
+                <div>
+                    <span class="pill">Association loi 1901</span>
+                    <span class="pill">Handicaps invisibles</span>
+                    <span class="pill">Sensibilisation</span>
+                </div>
+            </section>
+            
+            <section id="offre">
+                <h2>Quelle est notre offre ?</h2>
+                
+                <p>
+                    Nous proposons aux entreprises un <span class="highlight">séminaire immersif et expérientiel</span> appelé 
+                    <span class="highlight">Vivre l’invisible</span>, conçu comme une expérience humaine, sensorielle et collective.
+                </p>
+                
+                <p>
+                    D’une durée de un à trois jours, ce séminaire alterne mises en situation, ateliers participatifs et débriefs guidés pour aider les collaborateurs à :
+                </p>
+                
+                <ul>
+                    <li>Comprendre les réalités vécues par les personnes en situation de handicap invisible ;</li>
+                    <li>Réfléchir à leurs postures professionnelles et managériales ;</li>
+                    <li>Développer l’empathie et les bons réflexes au travail.</li>
+                </ul>
+            </section>
+            
+            <section id="activites" class="activities">
+                <h2>Quelles sont les activités proposées ?</h2>
+                
+                <ul>
+                    <li>
+                        <strong>Formation premier secours :</strong> formation pratique pour réagir face à des urgences liées aux handicaps invisibles.
+                    </li>
+                    
+                    <li>
+                        <strong>Mises en situation :</strong> tâches professionnelles simples réalisées avec des dispositifs simulant douleurs ou troubles chroniques.
+                    </li>
+                    
+                    <li>
+                        <strong>Atelier d’hypnose :</strong> immersion encadrée par un professionnel pour comprendre certaines émotions ou troubles.
+                    </li>
+                    
+                    <li>
+                        <strong>Conférence d’un intervenant :</strong> témoignage d’un professionnel ou d’une personne en situation de handicap.
+                    </li>
+                    
+                    <li>
+                        <strong>Escape game :</strong> énigme managériale vécue depuis la perspective d’une personne en situation de handicap.
+                    </li>
+                    
+                    <li>
+                        <strong>Repas dans le noir :</strong> expérience sensorielle pour questionner nos repères visuels.
+                    </li>
+                </ul>
+            </section>
+            
+        </main>
+        
+        <footer>
+            CoeurVisible – Sensibilisation aux handicaps invisibles – 2025.
+        </footer>
+        
+    </body>
+</html>
