@@ -6,142 +6,125 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         
         <style>
-     body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    margin: 0;
-    background: #f5f7fb;
-    color: #222;
-}
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            margin: 0;
+            background: #f5f7fb;
+            color: #222;
+        }
 
-header {
-    background: linear-gradient(135deg, #f35a4b, #f2a52b);
-    color: white;
-    padding: 24px 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+        header {
+            background: linear-gradient(135deg, #f35a4b, #f2a52b);
+            color: white;
+            padding: 24px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-/* ⭐ LOGO redondo corregido */
-.logo-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-}
+        .logo-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 999px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #f35a4b;
+        }
 
-/* si algún día usas el círculo antiguo */
-.logo-circle {
-    width: 50px;
-    height: 50px;
-    border-radius: 999px;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    color: #f35a4b;
-}
+        nav a {
+            margin-left: 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
-nav a {
-    margin-left: 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-}
+        nav a:hover {
+            text-decoration: underline;
+        }
 
-nav a:hover {
-    text-decoration: underline;
-}
+        .hero {
+            padding: 60px 10%;
+            background: white;
+        }
 
-/* ⭐ HERO original corregido */
-.hero {
-    padding: 60px 10%;
-    background: white;
-}
+        .hero h1 {
+            font-size: 2.4rem;
+            margin-bottom: 10px;
+            color: #1b2744;
+        }
 
-.hero h1 {
-    font-size: 2.4rem;
-    margin-bottom: 10px;
-    color: #1b2744;
-}
+        .hero p.subtitle {
+            font-size: 1.1rem;
+            max-width: 650px;
+            line-height: 1.6;
+        }
 
-.hero p.subtitle {
-    font-size: 1.1rem;
-    max-width: 650px;
-    line-height: 1.6;
-}
+        .tagline {
+            margin-top: 18px;
+            padding: 10px 16px;
+            display: inline-block;
+            background: #ffe7df;
+            border-radius: 999px;
+            font-weight: 600;
+            color: #c23a24;
+            font-size: 0.95rem;
+        }
 
-.tagline {
-    margin-top: 18px;
-    padding: 10px 16px;
-    display: inline-block;
-    background: #ffe7df;
-    border-radius: 999px;
-    font-weight: 600;
-    color: #c23a24;
-    font-size: 0.95rem;
-}
+        main {
+            padding: 20px 10% 60px;
+        }
 
-main {
-    padding: 20px 10% 60px;
-}
+        section {
+            margin-top: 40px;
+            background: white;
+            border-radius: 16px;
+            padding: 24px 28px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
 
-section {
-    margin-top: 40px;
-    background: white;
-    border-radius: 16px;
-    padding: 24px 28px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-}
+        section h2 {
+            margin-top: 0;
+            color: #1b2744;
+        }
 
-section h2 {
-    margin-top: 0;
-    color: #1b2744;
-}
+        .activities ul {
+            padding-left: 20px;
+        }
 
-.activities ul {
-    padding-left: 20px;
-}
+        .activities li {
+            margin-bottom: 10px;
+        }
 
-.activities li {
-    margin-bottom: 10px;
-}
+        footer {
+            margin-top: 40px;
+            padding: 20px 10%;
+            font-size: 0.9rem;
+            color: #555;
+            background: #edf0f8;
+        }
 
-footer {
-    margin-top: 40px;
-    padding: 20px 10%;
-    font-size: 0.9rem;
-    color: #555;
-    background: #edf0f8;
-}
+        .pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: #edf0f8;
+            font-size: 0.8rem;
+            margin-right: 6px;
+            margin-bottom: 4px;
+        }
 
-.pill {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: #edf0f8;
-    font-size: 0.8rem;
-    margin-right: 6px;
-    margin-bottom: 4px;
-}
-
-.highlight {
-    font-weight: 600;
-}
-
-
-            
-            .logo-img {
-    height: 70px; /* cambia a 50px, 80px, 120px según quieras */
-    width: auto;
-}
+        .highlight {
+            font-weight: 600;
+        }
     </style>
     </head>
     
@@ -149,7 +132,7 @@ footer {
         
         <header>
             <div class="logo">
-                <img class="logo-img" src="Logo Coeur visible.png" alt="Logo CoeurVisible">
+                <div class="logo-circle">CV</div>
                 <div>
                     <div style="font-weight:700; font-size:1.1rem;">CoeurVisible</div>
                     <div style="font-size:0.85rem;">Vivre pour comprendre l’invisible</div>
