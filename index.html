@@ -1,238 +1,488 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="UTF-8" />
-        <title>CoeurVisible – Vivre l’invisible</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <style>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>CœurVisible – Vivre l’invisible au travail</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        :root {
+            --yellow: #ffd94a;
+            --yellow-soft: #fff4bf;
+            --orange: #f46a4e;
+            --blue: #23406a;
+            --bg: #f5f7fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             margin: 0;
-            background: #f5f7fb;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
             color: #222;
         }
 
+        /* HEADER + NAV */
+
         header {
-            background: linear-gradient(135deg, #f35a4b, #f2a52b);
-            color: white;
-            padding: 24px 10%;
+            background: var(--yellow);
+            padding: 16px 8%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 20;
         }
 
-        .logo {
+        .brand {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .logo-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 999px;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .brand img {
+            height: 52px;   /* ajusta según tu logo */
+            width: auto;
+        }
+
+        .brand-text-title {
             font-weight: 700;
-            color: #f35a4b;
+            font-size: 1.1rem;
+            color: var(--blue);
+        }
+
+        .brand-text-sub {
+            font-size: 0.85rem;
+            color: #444;
         }
 
         nav a {
             margin-left: 20px;
-            color: white;
             text-decoration: none;
+            font-size: 0.95rem;
             font-weight: 500;
+            color: var(--blue);
         }
 
         nav a:hover {
             text-decoration: underline;
         }
 
+        /* HERO */
+
         .hero {
-            padding: 60px 10%;
-            background: white;
+            background: var(--yellow);
+            padding: 50px 8% 60px;
         }
 
-        .hero h1 {
-            font-size: 2.4rem;
-            margin-bottom: 10px;
-            color: #1b2744;
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 40px;
+            align-items: center;
         }
 
-        .hero p.subtitle {
-            font-size: 1.1rem;
-            max-width: 650px;
+        .hero-title {
+            font-size: 2.3rem;
+            line-height: 1.15;
+            color: var(--blue);
+            margin: 0 0 14px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
             line-height: 1.6;
+            max-width: 560px;
         }
 
-        .tagline {
-            margin-top: 18px;
-            padding: 10px 16px;
+        .hero-tagline {
             display: inline-block;
-            background: #ffe7df;
+            margin-top: 18px;
+            padding: 8px 16px;
             border-radius: 999px;
+            background: #fff;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: #c23a24;
+            color: var(--orange);
+        }
+
+        .hero-buttons {
+            margin-top: 26px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            border-radius: 999px;
+            padding: 10px 20px;
             font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
         }
 
-        main {
-            padding: 20px 10% 60px;
+        .btn-primary {
+            background: var(--blue);
+            color: #fff;
         }
 
-        section {
-            margin-top: 40px;
-            background: white;
-            border-radius: 16px;
-            padding: 24px 28px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        .btn-primary:hover {
+            filter: brightness(1.05);
         }
 
-        section h2 {
-            margin-top: 0;
-            color: #1b2744;
+        .btn-ghost {
+            background: #fff;
+            color: var(--blue);
+            border: 1px solid rgba(0,0,0,0.06);
         }
 
-        .activities ul {
-            padding-left: 20px;
+        .btn-ghost:hover {
+            background: #fdfdfd;
         }
 
-        .activities li {
-            margin-bottom: 10px;
+        .hero-visual {
+            justify-self: center;
         }
 
-        footer {
-            margin-top: 40px;
-            padding: 20px 10%;
+        .hero-illustration {
+            width: 260px;
+            max-width: 100%;
+            border-radius: 24px;
+            background: #fff;
+            box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+            padding: 20px;
+            text-align: center;
             font-size: 0.9rem;
             color: #555;
-            background: #edf0f8;
+        }
+
+        .hero-illustration img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        /* MAIN LAYOUT */
+
+        main {
+            padding: 40px 8% 60px;
+        }
+
+        .section {
+            max-width: 1000px;
+            margin: 0 auto 28px;
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px 26px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+        }
+
+        .section h2 {
+            margin-top: 0;
+            color: var(--blue);
+            font-size: 1.4rem;
+        }
+
+        .section p {
+            line-height: 1.7;
+            font-size: 0.97rem;
+        }
+
+        .section ul {
+            padding-left: 18px;
+            margin: 10px 0 0;
+            font-size: 0.96rem;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .pill-row {
+            margin-top: 8px;
         }
 
         .pill {
             display: inline-block;
             padding: 4px 10px;
             border-radius: 999px;
-            background: #edf0f8;
+            background: var(--yellow-soft);
             font-size: 0.8rem;
             margin-right: 6px;
             margin-bottom: 4px;
+            color: #714c00;
         }
 
         .highlight {
             font-weight: 600;
         }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .two-cols h3 {
+            margin-top: 0;
+            font-size: 1.05rem;
+            color: var(--blue);
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 18px 8%;
+            font-size: 0.85rem;
+            color: #555;
+            background: #edf0f8;
+            text-align: center;
+        }
+
+        a.text-link {
+            color: var(--orange);
+            text-decoration: none;
+        }
+
+        a.text-link:hover {
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 880px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .hero-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-visual {
+                order: -1;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section {
+                padding: 18px 16px;
+            }
+
+            .hero {
+                padding: 36px 6% 40px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .two-cols {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-    </head>
-    
-    <body>
-        
-        <header>
-            <div class="logo">
-                <div class="logo-circle">CV</div>
-                <div>
-                    <div style="font-weight:700; font-size:1.1rem;">CoeurVisible</div>
-                    <div style="font-size:0.85rem;">Vivre pour comprendre l’invisible</div>
-                </div>
-            </div>
-            
-            <nav>
-                <a href="#qui-sommes-nous">Qui sommes-nous ?</a>
-                <a href="#offre">Notre offre</a>
-                <a href="#activites">Activités</a>
-            </nav>
-        </header>
-        
-        <section class="hero">
-            <h1>Vivre l’invisible : séminaires immersifs sur les handicaps invisibles</h1>
-            <p class="subtitle">
-                CoeurVisible est une association loi 1901 engagée dans la sensibilisation aux handicaps invisibles en milieu professionnel.
-                Nous aidons les entreprises à développer une culture inclusive vécue et ressentie grâce à des séminaires immersifs.
+</head>
+
+<body>
+
+<header>
+    <div class="brand">
+        <!-- Cambia la ruta por el nombre real de tu archivo de logo -->
+        <img src="logo-coeur-visible.png" alt="Logo CœurVisible" />
+        <div>
+            <div class="brand-text-title">CœurVisible</div>
+            <div class="brand-text-sub">Sensibiliser aux handicaps invisibles au travail</div>
+        </div>
+    </div>
+
+    <nav>
+        <a href="#pourquoi">Pourquoi ce sujet ?</a>
+        <a href="#approche">Notre approche</a>
+        <a href="#activites">Activités</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-inner">
+        <div>
+            <h1 class="hero-title">Vivre l’invisible pour transformer le travail</h1>
+            <p class="hero-subtitle">
+                CœurVisible accompagne les entreprises dans la sensibilisation aux
+                <span class="highlight">handicaps invisibles</span> grâce à des séminaires immersifs
+                qui font vivre, ressentir et comprendre les réalités souvent cachées
+                de leurs collaborateurs.
             </p>
-            
-            <div class="tagline">
-                Pour mieux comprendre, il faut parfois vivre ce que l’on ne voit pas.
+
+            <div class="hero-tagline">
+                Pour mieux comprendre ce que l’on ne voit pas, il faut parfois le vivre.
             </div>
-        </section>
-        
-        <main>
-            
-            <section id="qui-sommes-nous">
-                <h2>Qui sommes-nous ?</h2>
-                
+
+            <div class="hero-buttons">
+                <a class="btn btn-primary" href="mailto:contact@coeurvisible.fr">
+                    Demander un appel découverte
+                </a>
+                <a class="btn btn-ghost" href="#approche">
+                    Voir notre séminaire
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-illustration">
+                <!-- si quieres, aquí puedes poner una ilustración tipo Petite Mu -->
+                <img src="visuel-handicap-invisible.png" alt="Illustration handicaps invisibles" />
+                <div>Un séminaire immersif pour changer les regards au sein de vos équipes.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main>
+
+    <section id="pourquoi" class="section">
+        <h2>Pourquoi parler de handicaps invisibles au travail ?</h2>
+        <p>
+            En France, près de <span class="highlight">10&nbsp;millions de personnes</span> sont concernées
+            par un handicap invisible, soit environ 80&nbsp;% des handicaps. Pourtant, ces situations
+            restent largement méconnues et sous-déclarées.
+        </p>
+        <ul>
+            <li>Incompréhensions autour de la fatigue, de l’absentéisme ou de certaines difficultés quotidiennes ;</li>
+            <li>Managers qui ne savent pas toujours comment aborder le sujet ;</li>
+            <li>Collaborateurs qui n’osent pas parler de leur situation par peur du jugement.</li>
+        </ul>
+        <p>
+            CœurVisible part d’une conviction simple : pour passer d’un discours sur l’inclusion à
+            une <span class="highlight">expérience concrète</span>, il faut créer des espaces où l’on peut
+            ressentir, partager et réfléchir ensemble.
+        </p>
+    </section>
+
+    <section id="approche" class="section">
+        <h2>Notre approche&nbsp;: des séminaires immersifs, pas des conférences descendantes</h2>
+        <p>
+            Nous avons conçu <span class="highlight">«&nbsp;Vivre l’invisible&nbsp;»</span>, un séminaire
+            immersif et expérientiel à destination des entreprises qui souhaitent développer une
+            culture inclusive <span class="highlight">vécue</span>, donner aux managers des repères concrets
+            et ouvrir un espace de parole sécurisant autour des handicaps invisibles.
+        </p>
+        <p>
+            Le séminaire peut durer d’une à trois journées et alterne&nbsp;:
+        </p>
+        <ul>
+            <li><span class="highlight">Mises en situation</span> pour ressentir l’impact des douleurs, troubles sensoriels ou cognitifs sur le travail ;</li>
+            <li><span class="highlight">Ateliers participatifs et débriefs guidés</span> pour transformer les ressentis en prises de conscience et en pistes d’action ;</li>
+            <li><span class="highlight">Apports et témoignages</span> de professionnels et de personnes concernées.</li>
+        </ul>
+        <p>
+            À la fin, l’entreprise repart avec des <span class="highlight">engagements concrets</span>
+            co-construits, une <span class="highlight">feuille de route</span> de premières actions et
+            des ressources pour prolonger la démarche.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Pour qui&nbsp;?</h2>
+
+        <div class="two-cols">
+            <div>
+                <h3>Directions &amp; RH</h3>
                 <p>
-                    Nous sommes l’association <span class="highlight">CoeurVisible</span>, régie par la loi 1901 et engagée dans la sensibilisation aux handicaps invisibles en milieu professionnel.
-                    Notre ambition est d’aider les entreprises à développer une culture inclusive grâce à des séminaires immersifs et expérientiels.
+                    Directions RH, Diversité &amp; Inclusion, QVCT… qui veulent aller
+                    au-delà des obligations légales et installer une culture inclusive durable.
                 </p>
-                
-                <p style="font-size:0.9rem; color:#555;">
-                    À la suite du premier rendu, nous avons choisi de nous concentrer en priorité sur les entreprises.
-                </p>
-                
-                <div>
-                    <span class="pill">Association loi 1901</span>
-                    <span class="pill">Handicaps invisibles</span>
-                    <span class="pill">Sensibilisation</span>
-                </div>
-            </section>
-            
-            <section id="offre">
-                <h2>Quelle est notre offre ?</h2>
-                
+            </div>
+            <div>
+                <h3>Managers &amp; équipes</h3>
                 <p>
-                    Nous proposons aux entreprises un <span class="highlight">séminaire immersif et expérientiel</span> appelé 
-                    <span class="highlight">Vivre l’invisible</span>, conçu comme une expérience humaine, sensorielle et collective.
+                    Managers, encadrants et équipes opérationnelles pour qui les enjeux de
+                    coopération, de charge de travail et de santé au travail sont centraux.
                 </p>
-                
-                <p>
-                    D’une durée de un à trois jours, ce séminaire alterne mises en situation, ateliers participatifs et débriefs guidés pour aider les collaborateurs à :
-                </p>
-                
-                <ul>
-                    <li>Comprendre les réalités vécues par les personnes en situation de handicap invisible ;</li>
-                    <li>Réfléchir à leurs postures professionnelles et managériales ;</li>
-                    <li>Développer l’empathie et les bons réflexes au travail.</li>
-                </ul>
-            </section>
-            
-            <section id="activites" class="activities">
-                <h2>Quelles sont les activités proposées ?</h2>
-                
-                <ul>
-                    <li>
-                        <strong>Formation premier secours :</strong> formation pratique pour réagir face à des urgences liées aux handicaps invisibles.
-                    </li>
-                    
-                    <li>
-                        <strong>Mises en situation :</strong> tâches professionnelles simples réalisées avec des dispositifs simulant douleurs ou troubles chroniques.
-                    </li>
-                    
-                    <li>
-                        <strong>Atelier d’hypnose :</strong> immersion encadrée par un professionnel pour comprendre certaines émotions ou troubles.
-                    </li>
-                    
-                    <li>
-                        <strong>Conférence d’un intervenant :</strong> témoignage d’un professionnel ou d’une personne en situation de handicap.
-                    </li>
-                    
-                    <li>
-                        <strong>Escape game :</strong> énigme managériale vécue depuis la perspective d’une personne en situation de handicap.
-                    </li>
-                    
-                    <li>
-                        <strong>Repas dans le noir :</strong> expérience sensorielle pour questionner nos repères visuels.
-                    </li>
-                </ul>
-            </section>
-            
-        </main>
-        
-        <footer>
-            CoeurVisible – Sensibilisation aux handicaps invisibles – 2025.
-        </footer>
-        
-    </body>
+            </div>
+        </div>
+
+        <p style="margin-top:14px;">
+            Nous adaptons le format (durée, niveau de profondeur, exemples) en fonction
+            de la taille de l’entreprise, du secteur d’activité et de votre maturité sur
+            les sujets de handicap et d’inclusion.
+        </p>
+    </section>
+
+    <section class="section">
+        <h2>Ce qui rend CœurVisible différent</h2>
+        <ul>
+            <li><span class="highlight">L’immersion</span> : on ne se contente pas d’écouter, on vit la situation.</li>
+            <li><span class="highlight">L’expérience collective</span> : les activités sont conçues pour être vécues en groupe.</li>
+            <li><span class="highlight">La co-construction</span> avec l’entreprise : contenu ajusté à vos enjeux (politique handicap, QVCT, réorganisation…).</li>
+            <li><span class="highlight">Le passage à l’action</span> : chaque séminaire se conclut par des pistes concrètes pour ajuster pratiques managériales et outils du quotidien.</li>
+        </ul>
+
+        <div class="pill-row">
+            <span class="pill">Immersion</span>
+            <span class="pill">Expérience collective</span>
+            <span class="pill">Culture inclusive</span>
+        </div>
+    </section>
+
+    <section id="activites" class="section">
+        <h2>Exemples d’activités proposées</h2>
+        <ul>
+            <li><strong>Formation premiers secours &amp; réactions adaptées</strong> : apprendre à réagir face à certaines situations liées aux handicaps invisibles.</li>
+            <li><strong>Mises en situation professionnelles</strong> : réaliser des tâches simples avec des dispositifs simulant douleurs, troubles sensoriels ou cognitifs.</li>
+            <li><strong>Atelier d’hypnose ou d’immersion guidée</strong> encadré par un professionnel.</li>
+            <li><strong>Conférences &amp; témoignages</strong> de personnes concernées et d’experts.</li>
+            <li><strong>Escape game managérial</strong> autour d’un scénario de handicap invisible.</li>
+            <li><strong>Repas dans le noir</strong> pour interroger nos repères et nos biais.</li>
+        </ul>
+        <p style="font-size:0.9rem; margin-top:10px;">
+            Chaque activité est suivie d’un débrief structuré&nbsp;: ce que j’ai ressenti, ce que cela change dans mon regard,
+            ce que je peux ajuster demain dans ma pratique professionnelle.
+        </p>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Travailler avec CœurVisible</h2>
+        <p>
+            Vous souhaitez organiser un premier séminaire pilote, adapter un format à votre CODIR ou construire
+            un parcours de sensibilisation sur l’année&nbsp;?
+        </p>
+        <p>
+            Écrivons ensemble le format le plus adapté à vos enjeux.
+        </p>
+        <p>
+            📩 <strong>Nous contacter&nbsp;:</strong>
+            <a class="text-link" href="mailto:contact@coeurvisible.fr">contact@coeurvisible.fr</a>
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    CœurVisible – Sensibilisation aux handicaps invisibles en entreprise – 2025.
+</footer>
+
+</body>
 </html>
