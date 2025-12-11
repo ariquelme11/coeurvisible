@@ -207,13 +207,15 @@
             color: #555;
         }
 
-        .hero-illustration img {
+ .hero-illustration img {
     width: 100%;
-    max-height: 180px;  /* AGRANDA controladamente la imagen */
-    object-fit: cover;  /* recorte elegante sin deformar */
-    border-radius: 16px;
+    max-width: 520px;    /* AGRANDA la imagen */
+    height: auto;        /* evita deformaciones */
+    object-fit: cover;   /* por si necesitas recorte suave */
+    border-radius: 20px; /* más elegante */
     margin-bottom: 12px;
 }
+
 
 
         /* MAIN LAYOUT */
@@ -396,7 +398,7 @@
             <div class="hero-illustration">
                 <!-- si quieres, aquí puedes poner una ilustración tipo Petite Mu -->
                 <img src="Seminario.jpg" alt="Illustration handicaps invisibles" />
-                <div>Un séminaire immersif pour changer les regards au sein de vos équipes.</div>
+            
             </div>
         </div>
     </div>
