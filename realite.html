@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>CœurVisible – Expérience en réalité virtuelle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        :root {
+            --orange: #f39b5a;
+            --orange-dark: #f35a4b;
+            --bleu: #16355b;
+            --bleu-soft: #1f446e;
+            --fond: #f5f7fb;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--fond);
+            color: #22304a;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* --- Barre haute simple --- */
+        header {
+            padding: 16px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--bleu);
+        }
+
+        .header-link {
+            font-size: 0.95rem;
+            color: var(--bleu);
+            opacity: 0.9;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 48px 8% 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(135deg, var(--orange-dark), var(--orange));
+            color: white;
+        }
+
+        .hero-left {
+            max-width: 560px;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.15);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 3vw, 3rem);
+            line-height: 1.15;
+            margin: 0 0 14px;
+        }
+
+        .hero-lead {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .hero-tagline {
+            font-size: 0.95rem;
+            opacity: 0.95;
+            margin-bottom: 26px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            border-radius: 999px;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--bleu-soft);
+        }
+
+        .btn-primary span.icon {
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        /* --- Image VR --- */
+        .hero-right {
+            max-width: 420px;
+            flex-shrink: 0;
+        }
+
+        .hero-card {
+            background: white;
+            color: #22304a;
+            border-radius: 24px;
+            padding: 14px 14px 18px;
+            box-shadow: 0 16px 35px rgba(0,0,0,0.18);
+        }
+
+        .hero-card img {
+            width: 100%;
+            border-radius: 18px;
+            display: block;
+        }
+
+        .hero-card p {
+            font-size: 0.95rem;
+            margin: 10px 4px 0;
+            line-height: 1.4;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--bleu-soft);
+            background: #e7f0ff;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        /* --- SECTION AVANTAGES --- */
+        .section {
+            padding: 56px 8% 40px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+            color: var(--bleu);
+        }
+
+        .section-sub {
+            font-size: 1rem;
+            max-width: 640px;
+            margin-bottom: 32px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 18px 20px 20px;
+            box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 1.05rem;
+            color: var(--bleu-soft);
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* --- SECTION ÉTAPES --- */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            counter-reset: etape;
+        }
+
+        .step {
+            background: #eef3ff;
+            border-radius: 18px;
+            padding: 18px 18px 20px;
+        }
+
+        .step::before {
+            counter-increment: etape;
+            content: counter(etape);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--bleu-soft);
+            color: white;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .step h3 {
+            margin: 4px 0 8px;
+            font-size: 1rem;
+            color: var(--bleu-soft);
+        }
+
+        .step p {
+            margin: 0;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        /* --- SECTION CALL TO ACTION FINAL --- */
+        .cta-final {
+            padding: 40px 8% 60px;
+        }
+
+        .cta-box {
+            background: var(--bleu-soft);
+            border-radius: 26px;
+            padding: 28px 26px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            color: white;
+        }
+
+        .cta-box-text h2 {
+            margin: 0 0 6px;
+            font-size: 1.5rem;
+        }
+
+        .cta-box-text p {
+            margin: 0;
+            font-size: 0.98rem;
+            opacity: 0.95;
+        }
+
+        .cta-box-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--bleu-soft);
+            border-radius: 999px;
+            padding: 10px 22px;
+            border: none;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-outline-light {
+            border-radius: 999px;
+            padding: 10px 22px;
+            border: 1px solid rgba(255,255,255,0.8);
+            color: white;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 18px 8% 26px;
+            font-size: 0.85rem;
+            color: #66758a;
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 960px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 32px 7% 40px;
+            }
+
+            .hero-right {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .grid-3,
+            .steps {
+                grid-template-columns: minmax(0, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding-inline: 6%;
+            }
+
+            .section,
+            .cta-final {
+                padding-inline: 6%;
+            }
+
+            .cta-box {
+                padding: 22px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Barre simple + lien retour -->
+    <header>
+        <div class="logo-text">CœurVisible</div>
+        <a class="header-link" href="index.html">← Retour au site principal</a>
+    </header>
+
+    <!-- HERO VR -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-eyebrow">Expérience immersive VR</div>
+            <h1>Vivre l’invisible grâce à la réalité virtuelle</h1>
+            <p class="hero-lead">
+                Offrez à vos équipes une immersion guidée en réalité virtuelle pour ressentir,
+                en sécurité, les impacts de certains handicaps invisibles dans le quotidien professionnel.
+            </p>
+            <p class="hero-tagline">
+                Une expérience forte, suivie d’un débrief encadré, pour faire évoluer les regards et
+                ouvrir la discussion dans vos équipes.
+            </p>
+
+            <div class="hero-cta">
+                <!-- CTA principal : demande de démo -->
+                <a
+                    class="btn-primary"
+                    href="mailto:contact@coeurvisible.fr?subject=Demande%20de%20d%C3%A9monstration%20VR&body=Bonjour%2C%0A%0ANous%20souhaiterions%20en%20savoir%20plus%20sur%20votre%20exp%C3%A9rience%20en%20r%C3%A9alit%C3%A9%20virtuelle.%0A%0ABien%20%C3%A0%20vous%2C"
+                >
+                    <span class="icon">🎧</span>
+                    <span>Demander une démonstration VR</span>
+                </a>
+
+                <!-- CTA secondaire : lien vers séminaire global -->
+                <a class="btn-secondary" href="index.html#seminaire">
+                    Découvrir le séminaire complet
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="hero-card">
+                <img src="Virtual.jpg"
+                     alt="Collaboratrice testant un casque de réalité virtuelle lors d’un atelier CœurVisible" />
+                <p>
+                    Pendant quelques minutes, vos collaborateurs se mettent à la place d’une personne
+                    vivant avec un handicap invisible : surcharge sensorielle, fatigue, troubles cognitifs…
+                </p>
+                <span class="hero-badge">Atelier immersif 30 à 45 min</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION AVANTAGES -->
+    <section class="section" id="avantages">
+        <h2 class="section-title">Pourquoi intégrer la réalité virtuelle à vos actions de sensibilisation&nbsp;?</h2>
+        <p class="section-sub">
+            La VR n’est pas un gadget : utilisée dans un cadre éthique et accompagné, elle permet de
+            transformer une prise de conscience théorique en expérience vécue, mémorable et partageable.
+        </p>
+
+        <div class="grid-3">
+            <article class="card">
+                <h3>Un impact émotionnel fort</h3>
+                <p>
+                    La mise en situation immersive crée un déclic : les participants ne « comprennent »
+                    plus seulement, ils ressentent les contraintes et les biais qu’une personne concernée
+                    vit au quotidien.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>Un cadre sécurisé & éthique</h3>
+                <p>
+                    Les expériences sont conçues pour rester sécurisantes, non stigmatisantes et toujours
+                    accompagnées par un intervenant formé à la sensibilisation aux handicaps invisibles.
+                </p>
+            </article>
+
+            <article class="card">
+                <h3>Des actions concrètes pour l’équipe</h3>
+                <p>
+                    Chaque immersion est suivie d’un débrief guidé pour identifier des pistes d’ajustement
+                    managérial, organisationnel ou relationnel adaptées à votre contexte.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- SECTION DÉROULÉ EN 3 ÉTAPES -->
+    <section class="section" id="deroule">
+        <h2 class="section-title">Comment se déroule une session VR CœurVisible&nbsp;?</h2>
+        <p class="section-sub">
+            Nous intervenons directement dans vos locaux ou sur le lieu de votre séminaire, pour des groupes
+            de managers ou d’équipes pluridisciplinaires.
+        </p>
+
+        <div class="steps">
+            <div class="step">
+                <h3>1. Recueil de vos besoins</h3>
+                <p>
+                    Avant l’intervention, nous échangeons sur vos objectifs, votre contexte et le profil des
+                    participants afin d’adapter le scénario et le temps d’atelier.
+                </p>
+            </div>
+            <div class="step">
+                <h3>2. Immersion en réalité virtuelle</h3>
+                <p>
+                    Les participants expérimentent tour à tour différents scénarios immersifs illustrant
+                    des situations de handicaps invisibles au travail, accompagnés par un animateur.
+                </p>
+            </div>
+            <div class="step">
+                <h3>3. Débrief & pistes d’action</h3>
+                <p>
+                    Un temps collectif permet de mettre des mots sur les ressentis et de co-construire des
+                    pistes concrètes pour faire évoluer les pratiques au sein de votre organisation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION CTA FINALE -->
+    <section class="cta-final" id="contact">
+        <div class="cta-box">
+            <div class="cta-box-text">
+                <h2>Envie de tester l’expérience avec votre équipe&nbsp;?</h2>
+                <p>
+                    Planifions un court échange pour voir comment intégrer la réalité virtuelle dans votre
+                    prochain séminaire ou votre plan d’actions handicap & inclusion.
+                </p>
+            </div>
+            <div class="cta-box-actions">
+                <a
+                    class="btn-light"
+                    href="mailto:contact@coeurvisible.fr?subject=Contact%20C%C5%93urVisible%20-%20VR"
+                >
+                    ✉️ Écrire à CœurVisible
+                </a>
+                <a class="btn-outline-light" href="index.html">
+                    ← Retour au site principal
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        CœurVisible – Sensibiliser aux handicaps invisibles au travail · Page dédiée à l’expérience en réalité virtuelle.
+    </footer>
+
+</body>
+</html>
